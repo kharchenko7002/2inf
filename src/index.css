@@ -1,0 +1,235 @@
+/* =======================
+   Базовые переменные темы
+   ======================= */
+:root{
+  --bg: #0f1222;
+  --bg-soft: #151937;
+  --card: #1b214b;
+  --text: #e8eaf6;
+  --muted: #b8c0ff;
+  --accent: #6c7bff;
+  --accent-2: #9a6cff;
+  --ring: rgba(108,123,255,.45);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+*{ box-sizing: border-box; }
+
+html, body, #root{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1000px 400px at 10% -10%, rgba(156,106,255,.15), transparent 60%),
+    radial-gradient(1200px 500px at 110% 10%, rgba(108,123,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, #0b0e1a 100%);
+  background-attachment: fixed;
+  line-height: 1.65;
+}
+
+/* =======================
+   Макет
+   ======================= */
+.container{
+  max-width: 860px;
+  margin: 48px auto;
+  padding: 0 20px;
+  animation: fade-in 400ms ease-out;
+}
+
+.card{
+  background: linear-gradient(180deg, var(--card) 0%, #171d42 100%);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  backdrop-filter: blur(4px);
+}
+
+/* =======================
+   Заголовки
+   ======================= */
+.title{
+  margin: 0 0 8px 0;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: .2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle{
+  text-align: center;
+  margin: 0 0 26px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =======================
+   Секции
+   ======================= */
+.section{
+  position: relative;
+  padding: 18px 0 8px;
+  border-top: 1px dashed rgba(255,255,255,.08);
+}
+.section:first-of-type{
+  border-top: none;
+  padding-top: 0;
+}
+
+.section h2{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(18px, 2.4vw, 22px);
+  margin: 0 0 10px 0;
+}
+
+.badge{
+  display: inline-grid;
+  place-items: center;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 6px 16px var(--ring);
+}
+
+/* =======================
+   Текст и элементы
+   ======================= */
+p{
+  margin: 0 0 12px 0;
+  color: #e9ebff;
+}
+p:last-child{ margin-bottom: 0; }
+
+.highlight{ color: var(--muted); }
+
+.note{
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  font-size: 14px;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(135deg, rgba(108,123,255,.15), rgba(154,108,255,.15));
+  color: var(--text);
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.btn:hover{
+  transform: translateY(-1px);
+  border-color: var(--ring);
+  box-shadow: 0 8px 22px var(--ring);
+}
+.btn:focus-visible{
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* =======================
+   Аккордеон (3 пункта)
+   ======================= */
+.accordion { margin-top: 6px; }
+
+.acc-item {
+  border-top: 1px dashed rgba(255,255,255,.08);
+}
+.acc-item:first-child { border-top: none; }
+
+.acc-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 14px 6px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+}
+
+.acc-title {
+  flex: 1;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.acc-trigger:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.chevron {
+  opacity: .8;
+  transition: transform .25s ease, opacity .2s ease;
+}
+.acc-item.open .chevron { transform: rotate(180deg); opacity: 1; }
+
+.acc-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    max-height .35s ease,
+    opacity .25s ease,
+    transform .35s ease;
+}
+
+.acc-item.open .acc-panel {
+  max-height: 1000px;  /* достаточно для любого блока */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.acc-inner {
+  padding: 6px 0 18px 0;
+  border-left: 2px solid rgba(255,255,255,.08);
+  margin-left: 6px;
+  padding-left: 14px;
+}
+
+/* =======================
+   Анимации и доступность
+   ======================= */
+@keyframes fade-in{
+  from{ opacity: 0; transform: translateY(6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  * { animation: none !important; transition: none !important; }
+}
+
+/* =======================
+   Адаптив
+   ======================= */
+@media (max-width: 560px){
+  .card{ padding: 20px; border-radius: 16px; }
+}
