@@ -36,7 +36,7 @@ export default function App() {
         <p className="subtitle">Et lite sammendrag av mål, planer og interesser</p>
 
         <div className="profile">
-          <img className="avatar" src="src\1.jpg" alt="Kostiantyn portrett" />
+          <img className="avatar" src="1.jpg" alt="Kostiantyn portrett" />
           <p className="profile-text">
             Hei! Jeg er Kostiantyn. Jeg liker å lære litt hver dag og holde ting enkelt:
             små oppgaver, korte notater og jevn fremdrift. Det hjelper meg å beholde
